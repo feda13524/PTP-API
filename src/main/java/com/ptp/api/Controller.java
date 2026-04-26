@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import com.ptp.api.model.parse.*;
 import com.ptp.api.model.price.*;
 
 @RestController
@@ -22,6 +23,18 @@ public class Controller {
         else {
             response.setSuccessful(true);
             response.setPrice(price);
+        }
+        return response;
+    }
+
+    @PostMapping("/parse")
+    public ParseResponse parse(@RequestBody ParseRequest request) {
+        ParseResponse response = new ParseResponse();
+        String result = Parser.getRawText(request.getUrl());
+        if (result == null || result.isEmpty()) response.setSuccessful(false);
+        else {
+            response.setSuccessful(true);
+            response.setResult(result);
         }
         return response;
     }

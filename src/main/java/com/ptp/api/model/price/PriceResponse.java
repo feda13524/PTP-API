@@ -1,7 +1,7 @@
 package com.ptp.api.model.price;
 
 public class PriceResponse {
-    private double price;
+    private double price = 0;
     private boolean successful;
     
     public PriceResponse() {}
