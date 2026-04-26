@@ -1,5 +1,5 @@
 # ParseThePrice API
-[📡 Тестовый эндпоинт](http://api.fedosik.ru/test)  
+[📡 Тестовый эндпоинт](https://api.fedosik.ru/test)  
 ### Использование
 #### Парсинг цены с сайта
 ```curl

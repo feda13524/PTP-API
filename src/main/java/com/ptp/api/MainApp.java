@@ -9,7 +9,7 @@ public class MainApp {
 		SpringApplication.run(MainApp.class, args);
 
         System.out.println("✅ Сервер запущен!");
-        System.out.println("📡 Тестовый эндпоинт: http://api.fedosik.ru/test");
+        System.out.println("📡 Тестовый эндпоинт: https://api.fedosik.ru/test");
 
 		Parser.initialize();
 		
