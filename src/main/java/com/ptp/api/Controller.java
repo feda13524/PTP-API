@@ -1,0 +1,28 @@
+package com.ptp.api;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.ptp.api.model.price.*;
+
+@RestController
+public class Controller {
+    @GetMapping("/test")
+    public String test() {
+        return "<div align=center><h1>ParseThePrice API</h1><h3>✅ Сервер работает!<br><br><a href=\"https://github.com/feda13524/ParseThePrice\">GitHub</a> | <a href=\"https://t.me/feda13524\">Telegram</a></h3></div>";
+    }
+    
+    @PostMapping("/price")
+    public PriceResponse price(@RequestBody PriceRequest request) {
+        PriceResponse response = new PriceResponse();
+        Double price = Parser.findPrice(request.getUrl());
+        if (price == null) response.setSuccessful(false);
+        else {
+            response.setSuccessful(true);
+            response.setPrice(price);
+        }
+        return response;
+    }
+}
