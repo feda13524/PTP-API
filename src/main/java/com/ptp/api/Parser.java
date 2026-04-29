@@ -42,7 +42,7 @@ public class Parser {
         }
     }
     
-    private static <T> T execute(String url, Function<WebDriver, T> action) {
+    private static synchronized <T> T execute(String url, Function<WebDriver, T> action) {
         if (!initialized) { initialize(); }
         
         try {
