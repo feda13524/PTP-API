@@ -3,7 +3,7 @@ spring:
     ollama:
       base-url: http://localhost:11434
       chat:
-        model: evilfreelancer/rugpt3:1.3b-q4_k_m
+        model: gemma3:4b
         temperature: 0.3
 
 server:

@@ -41,6 +41,7 @@ public class Controller {
         else {
             response.setSuccessful(true);
             response.setResult(rawResponse);
+            System.out.println(rawResponse);
         }
         return response;
     }
