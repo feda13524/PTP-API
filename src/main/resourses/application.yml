@@ -1,0 +1,10 @@
+spring:
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        model: evilfreelancer/rugpt3:1.3b-q4_k_m
+        temperature: 0.3
+
+server:
+  port: 8080

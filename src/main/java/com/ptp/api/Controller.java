@@ -10,6 +10,9 @@ import com.ptp.api.model.price.*;
 
 @RestController
 public class Controller {
+    private final AnalysisService analysisService;
+    public Controller(AnalysisService analysisService){ this.analysisService = analysisService; }
+
     @GetMapping("/test")
     public String test() {
         return "<div align=center><h1>ParseThePrice API</h1><h3>✅ Сервер работает!<br><br><a href=\"https://github.com/feda13524/ParseThePrice\">GitHub</a> | <a href=\"https://t.me/feda13524\">Telegram</a></h3></div>";
@@ -30,11 +33,14 @@ public class Controller {
     @PostMapping("/parse")
     public ParseResponse parse(@RequestBody ParseRequest request) {
         ParseResponse response = new ParseResponse();
-        String result = Parser.getRawText(request.getUrl());
-        if (result == null || result.isEmpty()) response.setSuccessful(false);
+        String siteText = Parser.getRawText(request.getUrl());
+        String rawResponse = analysisService.analyze(request.getMessage(), siteText).strip();
+        if (rawResponse == null || rawResponse.isEmpty() || rawResponse.charAt(0) == '!'){
+            response.setSuccessful(false);
+        }
         else {
             response.setSuccessful(true);
-            response.setResult(result);
+            response.setResult(rawResponse);
         }
         return response;
     }
