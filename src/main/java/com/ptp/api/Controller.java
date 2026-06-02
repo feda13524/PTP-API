@@ -34,7 +34,7 @@ public class Controller {
     public ParseResponse parse(@RequestBody ParseRequest request) {
         ParseResponse response = new ParseResponse();
         String siteText = Parser.getRawText(request.getUrl());
-        String rawResponse = analysisService.analyze(request.getMessage(), siteText).strip();
+        String rawResponse = analysisService.analyze(request.getMessage(), siteText);
         if (rawResponse == null || rawResponse.isEmpty() || rawResponse.charAt(0) == '!'){
             response.setSuccessful(false);
         }

@@ -5,6 +5,8 @@ spring:
       chat:
         model: gemma3:4b
         temperature: 0.3
+      init:
+        timeout: 120s
 
 server:
   port: 8080
